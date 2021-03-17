@@ -183,8 +183,13 @@ public class Parser {
     {
         Parser parser = new Parser();
 
-        String testString = "(abc)g*|(sd|f)*(sdf)";
+        //String testString = "(abc)g*|(sd|f)*(sdf)";
+        String testString = "abc";
         testString = parser.tryToAddLoopParentheses(testString);
         System.out.println(parser.toTree(testString));
+
+        TransistTable table = new TransistTable(parser.toTree(testString));
+        table.breakTransitions();
+        table.printTable();
     }
 }

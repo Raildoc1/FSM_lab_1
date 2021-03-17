@@ -17,4 +17,18 @@ public class NodeTransition {
     public char condition;
     public ITreeNode treeCondition;
     public boolean isEpsilon;
+
+    @Override
+    public String toString() {
+
+        if(isEpsilon)
+        {
+            return start + " --- e ---> " + end;
+        }
+        else
+        {
+            return start + " --- " + treeCondition + " ---> " + end;
+        }
+
+    }
 }
