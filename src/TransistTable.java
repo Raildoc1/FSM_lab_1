@@ -20,32 +20,18 @@ public class TransistTable {
         NodeTransition currentNode = nodes.pop();
 
         if (currentNode.treeCondition instanceof Add) {
-            if (currentNode.treeCondition.getChar() != ' ') {
-                //i dnt knw
-                nodes.add(new NodeTransition(lastState + 1, currentNode.end, currentNode.treeCondition.getChar(), null, false));
-            } else {
-                nodes.add(new NodeTransition(currentNode.start, currentNode.end, ' ', currentNode.treeCondition.getLeft(), false));
-                lastState++;
-                nodes.add(new NodeTransition(currentNode.start, currentNode.end, ' ', currentNode.treeCondition.getRight(), false));
-            }
+            nodes.add(new NodeTransition(currentNode.start, currentNode.end, ' ', currentNode.treeCondition.getLeft(), false));
+            nodes.add(new NodeTransition(currentNode.start, currentNode.end, ' ', currentNode.treeCondition.getRight(), false));
             lastState++;
         } else if (currentNode.treeCondition instanceof Multiply) {
-            if (currentNode.treeCondition.getChar() != ' ') {
-                //i dnt knw
-                nodes.add(new NodeTransition(lastState + 1, currentNode.end, currentNode.treeCondition.getChar(), null, false));
-            } else {
-                nodes.add(new NodeTransition(currentNode.start, lastState + 1, ' ', currentNode.treeCondition.getLeft(), false));
-                lastState++;
-                nodes.add(new NodeTransition(lastState + 1, currentNode.end, ' ', currentNode.treeCondition.getRight(), false));
-            }
+            nodes.add(new NodeTransition(currentNode.start, lastState + 1, ' ', currentNode.treeCondition.getLeft(), false));
+            lastState++;
+            nodes.add(new NodeTransition(lastState + 1, currentNode.end, ' ', currentNode.treeCondition.getRight(), false));
             lastState++;
         } else if (currentNode.treeCondition instanceof Loop) {
-            if (currentNode.treeCondition.getChar() != ' ') {
-                //i dnt knw
-                nodes.add(new NodeTransition(lastState + 1, currentNode.end, currentNode.treeCondition.getChar(), null, true));
-            } else {
-                //some code
-            }
+            nodes.add(new NodeTransition(lastState + 1, currentNode.end, ' ', null, true));
+            nodes.add(new NodeTransition(currentNode.start, lastState + 1, ' ', null, true));
+            nodes.add(new NodeTransition(lastState + 1, lastState + 1, ' ', currentNode.treeCondition.getLeft(), false));
             lastState++;
         }
 
