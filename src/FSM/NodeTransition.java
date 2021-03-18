@@ -21,13 +21,16 @@ public class NodeTransition {
     @Override
     public String toString() {
 
+        String startString = start == 0 ? "START" : String.valueOf(start);
+        String endString = end == 1 ? "END" : String.valueOf(end);
+
         if(isEpsilon)
         {
-            return start + " --- e ---> " + end;
+            return startString + " --- e ---> " + endString;
         }
         else
         {
-            return start + " --- " + treeCondition + " ---> " + end;
+            return startString + " --- " + treeCondition + " ---> " + endString;
         }
 
     }

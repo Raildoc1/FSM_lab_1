@@ -8,7 +8,7 @@ public class Parser {
         inputString = tryToRemoveParentheses(inputString);
         boolean hasAdd = hasAdd(inputString);
 
-        System.out.println("*: " + inputString);
+        //System.out.println("*: " + inputString);
 
         if(inputString.charAt(inputString.length() - 1) == '*')
         {
@@ -184,12 +184,17 @@ public class Parser {
         Parser parser = new Parser();
 
         //String testString = "(abc)g*|(sd|f)*(sdf)";
-        String testString = "abc";
+        //String testString = "a|(bc)*";
+        String testString = "(xy*|ab|(x|a*))(x|y*)";
         testString = parser.tryToAddLoopParentheses(testString);
         System.out.println(parser.toTree(testString));
 
         TransistTable table = new TransistTable(parser.toTree(testString));
         table.breakTransitions();
+        table.printTable();
+        table.breakEpsilonFSM();
+        table.printTable();
+        table.removeEquals();
         table.printTable();
     }
 }
