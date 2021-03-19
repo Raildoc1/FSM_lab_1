@@ -1,5 +1,7 @@
 import Operations.*;
 
+import java.util.ArrayList;
+
 public class Parser {
 
     public ITreeNode toTree(String inputString) {
@@ -185,7 +187,8 @@ public class Parser {
 
         //String testString = "(abc)g*|(sd|f)*(sdf)";
         //String testString = "a|(bc)*";
-        String testString = "(xy*|ab|(x|a*))(x|y*)";
+        String testString = "a|(bc)*|(fd(sd)*)";
+        //String testString = "(xy*|ab|(x|a*))(x|y*)";
         testString = parser.tryToAddLoopParentheses(testString);
         System.out.println(parser.toTree(testString));
 
@@ -195,6 +198,15 @@ public class Parser {
         table.breakEpsilonFSM();
         table.printTable();
         table.removeEquals();
+        table.printTable();
+
+        ArrayList<Character> alphabet = table.getAlphabet();
+
+        for (var c : alphabet) {
+            System.out.println(c);
+        }
+
+        table.determine();
         table.printTable();
     }
 }

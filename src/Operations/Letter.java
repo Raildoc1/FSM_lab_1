@@ -25,6 +25,6 @@ public class Letter implements ITreeNode {
 
     @Override
     public String toString() {
-        return "Letter(" + letter + ")";
+        return String.valueOf(letter);
     }
 }
