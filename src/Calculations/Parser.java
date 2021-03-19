@@ -1,3 +1,5 @@
+package Calculations;
+
 import Operations.*;
 
 public class Parser {
@@ -124,7 +126,7 @@ public class Parser {
         return s.substring(1, s.length() - 1);
     }
 
-    private String tryToAddLoopParentheses(String s)
+    public String tryToAddLoopParentheses(String s)
     {
         for (int i = 0; i < s.length() - 1; i++) {
             char current = s.charAt(i);
@@ -179,20 +181,4 @@ public class Parser {
         return new String(updatedArr);
     }
 
-    public static void main(String[] args)
-    {
-        Parser parser = new Parser();
-
-        //String testString = "(abc)g*|(sd|f)*(sdf)";
-        //String testString = "a|(bc)*";
-        //String testString = "a|(bc)*|(fd(sd)*)";
-        String testString = "(xy*|ab|(x|a*))(x|y*)";
-        testString = parser.tryToAddLoopParentheses(testString);
-        System.out.println(parser.toTree(testString));
-
-        FsmHandler fsmHandler = new FsmHandler(parser.toTree(testString));
-
-        fsmHandler.makeDetermineFSM();
-        fsmHandler.printTable();
-    }
 }

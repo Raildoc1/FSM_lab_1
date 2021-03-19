@@ -1,3 +1,5 @@
+package Calculations;
+
 import FSM.FSMTransition;
 import Operations.*;
 
@@ -8,6 +10,8 @@ public class FsmHandler {
 
     int lastState = 0;
     ArrayDeque<FSMTransition> fsm = new ArrayDeque<>();
+
+    public ArrayDeque<FSMTransition> getFsm() { return fsm.clone();}
 
     public FsmHandler(ITreeNode tree) {
         fsm.add(new FSMTransition(lastState, lastState + 1, ' ', tree, false));
