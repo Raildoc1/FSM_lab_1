@@ -2,9 +2,9 @@ package FSM;
 
 import Operations.ITreeNode;
 
-public class NodeTransition {
+public class FSMTransition {
 
-    public NodeTransition(int start, int end, char condition, ITreeNode treeCondition, boolean isEpsilon) {
+    public FSMTransition(int start, int end, char condition, ITreeNode treeCondition, boolean isEpsilon) {
         this.start = start;
         this.end = end;
         this.condition = condition;
