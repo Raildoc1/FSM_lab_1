@@ -5,7 +5,6 @@ import Calculations.Parser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class InputMenu {
 
@@ -33,9 +32,10 @@ public class InputMenu {
             FsmHandler fsmHandler = new FsmHandler(parser.toTree(testString));
 
             fsmHandler.makeDetermineFSM();
+            fsmHandler.printTable();
 
             frame.setVisible(false);
-            FsmView fsmView = new FsmView(fsmHandler.getFsm());
+            FsmFrame fsmFrame = new FsmFrame(fsmHandler.getFsm());
 
         });
 

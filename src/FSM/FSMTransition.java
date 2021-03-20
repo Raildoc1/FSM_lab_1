@@ -20,7 +20,7 @@ public class FSMTransition {
 
     @Override
     public String toString() {
-
+        //System.out.println("start: "+start+" end: "+end);
         String startString = start == 0 ? "START" : String.valueOf(start);
         String endString = end == 1 ? "END" : String.valueOf(end);
 

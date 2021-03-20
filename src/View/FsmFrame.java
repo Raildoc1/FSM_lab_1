@@ -6,16 +6,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 
-public class FsmView {
+public class FsmFrame {
     JFrame frame;
     ArrayDeque<FSMTransition> fsm;
-    final Random random = new Random();
-    ArrayList<Point> states = new ArrayList<>();
 
-    public FsmView(ArrayDeque<FSMTransition> fsm) {
+    public FsmFrame(ArrayDeque<FSMTransition> fsm) {
         this.fsm = fsm;
         frame = new JFrame("FSM View");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -23,11 +22,9 @@ public class FsmView {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
+        FsmPanel panel = new FsmPanel(fsm);
+        frame.setContentPane(panel);
+        frame.setVisible(true);
     }
 
-    private void drawFSM() {
-        for (var p: fsm) {
-            //some code
-        }
-    }
 }
