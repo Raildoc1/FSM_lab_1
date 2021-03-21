@@ -21,7 +21,8 @@ public class FsmFrame {
         frame.setSize(new Dimension(700, 700));
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
+        frame.setResizable(true);
+        frame.setMinimumSize(new Dimension(500, 500));
         FsmPanel panel = new FsmPanel(fsm);
         frame.setContentPane(panel);
         frame.setVisible(true);
